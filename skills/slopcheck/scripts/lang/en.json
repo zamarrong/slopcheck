@@ -54,7 +54,7 @@
       "why": "Three parallel items in a row. Classical rhetoric, but repeated it produces a mechanical cadence.",
       "fix": "Use two items, or four of unequal length and shape.",
       "patterns": [
-        "\\b\\w{4,}, \\w{4,},? and \\w{4,}\\b"
+        "(?<!, )\\b\\w{4,}, \\w{4,},? and \\w{4,}\\b"
       ]
     },
     {

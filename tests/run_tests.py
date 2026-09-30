@@ -94,6 +94,27 @@ class Separation(unittest.TestCase):
             self.assertEqual(len(spans), len(set(spans)), f"{f['id']} has duplicate hits")
 
 
+class FalsePositives(unittest.TestCase):
+    """A false positive costs more than a miss: a writer who gets flagged for
+    ordinary prose stops running the tool."""
+
+    def _ids(self, text, lang):
+        r = json.loads(subprocess.run(
+            [sys.executable, str(SCRIPT), "--json", "--lang", lang],
+            input=text, capture_output=True, text=True).stdout)
+        return {f["id"] for f in r["findings"]} | {a["id"] for a in r["allowed"]}
+
+    def test_four_item_list_is_not_a_tricolon(self):
+        self.assertNotIn("tricolon", self._ids(
+            "Trabajo con empresas de produccion, retail, consultoria y marketing.", "es"))
+        self.assertNotIn("tricolon", self._ids(
+            "We serve retail, logistics, manufacturing and healthcare clients.", "en"))
+
+    def test_three_item_list_is_still_caught(self):
+        self.assertIn("tricolon", self._ids(
+            "Mejora la precision, reduce errores y optimiza tiempos.", "es"))
+
+
 class CommandLine(unittest.TestCase):
     def test_detects_language(self):
         self.assertEqual(report("slop_es.txt")["language"], "es")

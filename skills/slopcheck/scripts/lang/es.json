@@ -58,7 +58,7 @@
       "why": "Tres elementos paralelos seguidos. Repetido produce un ritmo mecánico.",
       "fix": "Usa dos elementos, o cuatro de distinto largo y forma.",
       "patterns": [
-        "\\b[a-záéíóúñ]{5,}, [a-záéíóúñ]{5,} y [a-záéíóúñ]{5,}\\b"
+        "(?<!, )\\b[a-záéíóúñ]{5,}, [a-záéíóúñ]{5,} y [a-záéíóúñ]{5,}\\b"
       ]
     },
     {
@@ -158,6 +158,7 @@
     "budget": "presupuesto",
     "read_aloud": "Ahora léelo en voz alta. Eso ningún script lo hace.",
     "copula": "tasa de cópula: {rate} por cada 100 palabras",
-    "copula_low": "Cópula baja. Los modelos evitan el verbo ser y encadenan sustantivos abstractos."
+    "copula_low": "Cópula baja. Los modelos evitan el verbo ser y encadenan sustantivos abstractos.",
+    "within_budget": "dentro de presupuesto, tú decides"
   }
 }

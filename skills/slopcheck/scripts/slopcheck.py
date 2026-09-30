@@ -44,6 +44,7 @@ UI_DEFAULT = {
     "read_aloud": "Now read it aloud. No script can do that part.",
     "copula": "copula rate: {rate} per 100 words",
     "copula_low": "Low copula rate. Models avoid plain 'to be' and pile up abstract nouns.",
+    "within_budget": "within budget - your call",
 }
 
 
@@ -111,8 +112,10 @@ def excerpt(text: str, start: int, end: int, width: int = 60) -> str:
     return frag
 
 
-def scan_categories(text: str, pack: dict) -> list:
-    findings = []
+def scan_categories(text: str, pack: dict) -> tuple:
+    """Return (over_budget, allowed). A writer cannot judge what is never shown,
+    so categories that fired but stayed inside their budget come back too."""
+    findings, allowed = [], []
     for cat in pack.get("categories", []):
         spans, hits = [], []
         for raw in cat.get("patterns", []):
@@ -129,6 +132,10 @@ def scan_categories(text: str, pack: dict) -> list:
                 })
         hits.sort(key=lambda h: h["line"])
         budget = cat.get("budget", 0)
+        if hits and len(hits) <= budget:
+            allowed.append({"id": cat["id"], "label": cat.get("label", cat["id"]),
+                            "count": len(hits), "budget": budget,
+                            "hits": [{"line": h["line"], "excerpt": h["excerpt"]} for h in hits]})
         if len(hits) > budget:
             findings.append({
                 "id": cat["id"],
@@ -140,7 +147,7 @@ def scan_categories(text: str, pack: dict) -> list:
                 "fix": cat.get("fix", ""),
                 "hits": hits[:6],
             })
-    return findings
+    return findings, allowed
 
 
 def scan_formatting(text: str, words: int = 0) -> list:
@@ -181,7 +188,8 @@ def rhythm(text: str, pack: dict) -> dict:
 
 def analyze(text: str, pack: dict, include_quoted: bool = False) -> dict:
     scanned = text if include_quoted else mask_quoted(text)
-    findings = scan_categories(scanned, pack) + scan_formatting(scanned, len(text.split()))
+    findings, allowed = scan_categories(scanned, pack)
+    findings += scan_formatting(scanned, len(text.split()))
     findings.sort(key=lambda f: (-SEVERITY_ORDER.get(f["severity"], 0), -f["count"]))
     r = rhythm(text, pack)
     return {
@@ -190,6 +198,7 @@ def analyze(text: str, pack: dict, include_quoted: bool = False) -> dict:
         "characters": len(text),
         "words": len(text.split()),
         "findings": findings,
+        "allowed": allowed,
         "rhythm": r,
     }
 
@@ -212,6 +221,10 @@ def render(result: dict, pack: dict, path: str) -> str:
             L.append(f"         L{h['line']}: …{h['excerpt']}…")
         if f.get("fix"):
             L.append(f"         → {f['fix']}")
+    for a in result.get("allowed", []):
+        L.append(f"    ·  {a['label']}: {a['count']}  ({ui['within_budget']})")
+        for h in a["hits"]:
+            L.append(f"         L{h['line']}: …{h['excerpt']}…")
     L.append("")
 
     r = result["rhythm"]

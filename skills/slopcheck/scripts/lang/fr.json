@@ -51,7 +51,7 @@
       "why": "Trois éléments parallèles. Répété, cela produit une cadence mécanique.",
       "fix": "Utilisez deux éléments, ou quatre de longueurs inégales.",
       "patterns": [
-        "\\b[a-zàâçéèêëîïôûùüÿñ]{5,}, [a-zàâçéèêëîïôûùüÿñ]{5,} et [a-zàâçéèêëîïôûùüÿñ]{5,}\\b"
+        "(?<!, )\\b[a-zàâçéèêëîïôûùüÿñ]{5,}, [a-zàâçéèêëîïôûùüÿñ]{5,} et [a-zàâçéèêëîïôûùüÿñ]{5,}\\b"
       ]
     },
     {
@@ -144,6 +144,7 @@
     "budget": "quota",
     "read_aloud": "Maintenant, lisez-le à voix haute. Aucun script ne fait ça.",
     "copula": "taux de copule : {rate} pour 100 mots",
-    "copula_low": "Copule faible. Les modèles évitent le verbe être et empilent les noms abstraits."
+    "copula_low": "Copule faible. Les modèles évitent le verbe être et empilent les noms abstraits.",
+    "within_budget": "dans le quota, à vous de voir"
   }
 }

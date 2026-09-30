@@ -53,7 +53,7 @@
       "why": "Três itens paralelos seguidos. Repetido gera cadência mecânica.",
       "fix": "Use dois itens, ou quatro de tamanhos diferentes.",
       "patterns": [
-        "\\b[a-záàâãéêíóôõúç]{5,}, [a-záàâãéêíóôõúç]{5,} e [a-záàâãéêíóôõúç]{5,}\\b"
+        "(?<!, )\\b[a-záàâãéêíóôõúç]{5,}, [a-záàâãéêíóôõúç]{5,} e [a-záàâãéêíóôõúç]{5,}\\b"
       ]
     },
     {
@@ -148,6 +148,7 @@
     "budget": "limite",
     "read_aloud": "Agora leia em voz alta. Isso nenhum script faz.",
     "copula": "taxa de cópula: {rate} por 100 palavras",
-    "copula_low": "Cópula baixa. Os modelos evitam o verbo ser e empilham substantivos abstratos."
+    "copula_low": "Cópula baixa. Os modelos evitam o verbo ser e empilham substantivos abstratos.",
+    "within_budget": "dentro do limite, você decide"
   }
 }
