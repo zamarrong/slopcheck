@@ -50,10 +50,10 @@
       "label": "Tríade",
       "severity": "medium",
       "budget": 1,
-      "why": "Três itens paralelos seguidos. Repetido gera cadência mecânica.",
+      "why": "Três itens paralelos seguidos. Repetido gera cadência mecânica. Only single-word series are detected; multi-word triads need a human eye.",
       "fix": "Use dois itens, ou quatro de tamanhos diferentes.",
       "patterns": [
-        "(?<!, )\\b[a-záàâãéêíóôõúç]{5,}, [a-záàâãéêíóôõúç]{5,} e [a-záàâãéêíóôõúç]{5,}\\b"
+        "(?<!, )\\b[a-záàâãéêíóôõúç]{4,}, [a-záàâãéêíóôõúç]{4,},? e [a-záàâãéêíóôõúç]{4,}\\b"
       ]
     },
     {

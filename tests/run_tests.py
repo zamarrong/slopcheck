@@ -110,9 +110,14 @@ class FalsePositives(unittest.TestCase):
         self.assertNotIn("tricolon", self._ids(
             "We serve retail, logistics, manufacturing and healthcare clients.", "en"))
 
-    def test_three_item_list_is_still_caught(self):
-        self.assertIn("tricolon", self._ids(
-            "Mejora la precision, reduce errores y optimiza tiempos.", "es"))
+    def test_single_word_series_is_still_caught(self):
+        self.assertIn("tricolon", self._ids("El sistema es rapido, barato y seguro.", "es"))
+        self.assertIn("tricolon", self._ids("It is fast, cheap and reliable.", "en"))
+
+    def test_conditional_clause_is_not_a_tricolon(self):
+        # "if you present it, close the file and tell it" is not a list.
+        self.assertNotIn("tricolon", self._ids(
+            "Si lo vas a presentar, cierra el archivo y cuentalo.", "es"))
 
 
 class CommandLine(unittest.TestCase):

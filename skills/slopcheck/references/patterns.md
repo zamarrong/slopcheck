@@ -29,6 +29,12 @@ paragraphs it reads as a metronome.
 
 Use two items, or four of unequal length and grammatical shape.
 
+**Detection limit.** slopcheck only catches series of single words: `fast, cheap and
+reliable`. Multi-word triads like "it improves accuracy, reduces error and optimizes
+performance" are invisible to it, because every regex broad enough to catch them also
+matched ordinary conditionals and appositions in testing. Counting them is a job for
+the human eye. Precision was chosen over recall on purpose: see `CONTRIBUTING.md`.
+
 ## Signposting
 
 > "It's important to note that..." · "In summary..." · "Here's the thing:"

@@ -55,10 +55,10 @@
       "label": "Triada",
       "severity": "medium",
       "budget": 1,
-      "why": "Tres elementos paralelos seguidos. Repetido produce un ritmo mecánico.",
+      "why": "Tres elementos paralelos seguidos. Repetido produce un ritmo mecánico. Only single-word series are detected; multi-word triads need a human eye.",
       "fix": "Usa dos elementos, o cuatro de distinto largo y forma.",
       "patterns": [
-        "(?<!, )\\b[a-záéíóúñ]{5,}, [a-záéíóúñ]{5,} y [a-záéíóúñ]{5,}\\b"
+        "(?<!, )\\b[a-záéíóúüñ]{4,}, [a-záéíóúüñ]{4,},? y [a-záéíóúüñ]{4,}\\b"
       ]
     },
     {

@@ -48,10 +48,10 @@
       "label": "Triade",
       "severity": "medium",
       "budget": 1,
-      "why": "Trois éléments parallèles. Répété, cela produit une cadence mécanique.",
+      "why": "Trois éléments parallèles. Répété, cela produit une cadence mécanique. Only single-word series are detected; multi-word triads need a human eye.",
       "fix": "Utilisez deux éléments, ou quatre de longueurs inégales.",
       "patterns": [
-        "(?<!, )\\b[a-zàâçéèêëîïôûùüÿñ]{5,}, [a-zàâçéèêëîïôûùüÿñ]{5,} et [a-zàâçéèêëîïôûùüÿñ]{5,}\\b"
+        "(?<!, )\\b[a-zàâçéèêëîïôûùüÿñ]{4,}, [a-zàâçéèêëîïôûùüÿñ]{4,},? et [a-zàâçéèêëîïôûùüÿñ]{4,}\\b"
       ]
     },
     {

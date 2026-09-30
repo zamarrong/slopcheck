@@ -51,10 +51,10 @@
       "label": "Rule of three",
       "severity": "medium",
       "budget": 1,
-      "why": "Three parallel items in a row. Classical rhetoric, but repeated it produces a mechanical cadence.",
+      "why": "Three parallel items in a row. Classical rhetoric, but repeated it produces a mechanical cadence. Only single-word series are detected; multi-word triads need a human eye.",
       "fix": "Use two items, or four of unequal length and shape.",
       "patterns": [
-        "(?<!, )\\b\\w{4,}, \\w{4,},? and \\w{4,}\\b"
+        "(?<!, )\\b[a-z]{4,}, [a-z]{4,},? and [a-z]{4,}\\b"
       ]
     },
     {
