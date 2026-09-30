@@ -1,0 +1,9 @@
+{
+  "name": "slopcheck",
+  "description": "Audit prose for the habits that make writing read as machine-generated, in English, Spanish, Portuguese and French.",
+  "version": "1.0.0",
+  "author": { "name": "Jorge Zamarrón Gómez" },
+  "homepage": "https://github.com/zamarrong/slopcheck",
+  "license": "MIT",
+  "keywords": ["writing", "editing", "style", "ai-slop", "prose", "i18n"]
+}

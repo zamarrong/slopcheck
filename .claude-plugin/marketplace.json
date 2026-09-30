@@ -1,0 +1,11 @@
+{
+  "name": "slopcheck",
+  "owner": { "name": "Jorge Zamarrón Gómez" },
+  "plugins": [
+    {
+      "name": "slopcheck",
+      "source": "./",
+      "description": "Audit prose for the habits that make writing read as machine-generated."
+    }
+  ]
+}

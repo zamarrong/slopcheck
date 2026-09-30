@@ -1,0 +1,27 @@
+Cada vez veo más presentaciones impecables que nadie entiende. Empezando por quien las presenta.
+
+PDF bien armado, gráficas limpias, KPIs, una línea de tendencia que sube. Y si preguntas por qué esa cifra cayó en marzo, no hay respuesta. No porque la persona sea floja: porque nunca estuvo ahí. Escribió un prompt, descargó el archivo y lo mandó.
+
+En inglés ya tiene nombre: AI slop. Contenido generado en masa, con buena forma y sin nadie detrás. En internet el slop te roba tiempo. Dentro de una empresa, el slop aprueba decisiones.
+
+Y del otro lado del correo pasa lo mismo. El documento llega, quien lo recibe se lo pega a su IA y pide un resumen de tres puntos.
+
+Suma el flujo completo: un prompt de dos líneas se infla a catorce páginas, y esas catorce páginas se comprimen a tres viñetas. Pagamos dos veces por perder información.
+
+Lo que se perdió ahí no es el documento. Es para qué servía.
+
+Escribir era el filtro. Al redactar el reporte te dabas cuenta de que el número no cuadraba, que la conclusión no se sostenía, que te faltaba un dato. El documento nunca fue el entregable: era la prueba de que alguien había pensado.
+
+Hoy el documento sale igual de bonito con ese pensamiento o sin él.
+
+Y aquí está la parte incómoda: un número mal puesto en un Excel feo se cacha. El mismo número dentro de una gráfica elegante, con contexto y narrativa, se aprueba.
+
+Uso IA todos los días y construyo con ella. El problema no es la herramienta. Es que empezamos a tratar su salida como si fuera el trabajo, cuando apenas es el borrador.
+
+Tres reglas que aplico:
+
+→ La IA puede escribir el documento. No puede tener la opinión.
+→ Quien lo presenta defiende cada cifra sin el archivo abierto. Si no puede, no está listo.
+→ Antes de mandarlo: ¿qué decisión cambia esto? Si no cambia ninguna, no lo mandes.
+
+Producir documentos dejó de ser el cuello de botella. Entenderlos nunca lo fue, y eso no lo acelera ningún modelo.

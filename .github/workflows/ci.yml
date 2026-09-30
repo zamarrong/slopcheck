@@ -1,0 +1,25 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.8", "3.10", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Run test suite
+        run: python3 tests/run_tests.py
+      - name: Audit the project's own prose
+        run: |
+          python3 skills/slopcheck/scripts/slopcheck.py README.md || true
+          python3 skills/slopcheck/scripts/slopcheck.py skills/slopcheck/SKILL.md || true

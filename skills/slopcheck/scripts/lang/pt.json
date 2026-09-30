@@ -1,0 +1,153 @@
+{
+  "code": "pt",
+  "name": "Português",
+  "detect_hints": [
+    "que",
+    "de",
+    "não",
+    "uma",
+    "para",
+    "com",
+    "por",
+    "dos",
+    "das",
+    "como",
+    "mais",
+    "são",
+    "você",
+    "isso"
+  ],
+  "sentence_split": "(?<=[.!?…])\\s+",
+  "copulas": [
+    "é",
+    "são",
+    "era",
+    "eram",
+    "foi",
+    "foram",
+    "está",
+    "estão",
+    "ser"
+  ],
+  "copula_floor": 1.5,
+  "categories": [
+    {
+      "id": "antithesis",
+      "label": "Paralelismo negativo",
+      "severity": "high",
+      "budget": 1,
+      "why": "O sinal mais confiável. O modelo recorre a ele para soar profundo sem acrescentar informação.",
+      "fix": "Deixe no máximo um, e só onde o contraste sustenta o argumento.",
+      "patterns": [
+        "\\bn[aã]o (apenas|s[oó])\\b[^.?!]{0,70}\\bmas\\b",
+        "\\bn[aã]o [eé]\\b[^.?!,;]{1,50}[,:]\\s*[eé]\\b",
+        "\\bem vez de\\b",
+        "\\bn[aã]o se trata de\\b"
+      ]
+    },
+    {
+      "id": "tricolon",
+      "label": "Tríade",
+      "severity": "medium",
+      "budget": 1,
+      "why": "Três itens paralelos seguidos. Repetido gera cadência mecânica.",
+      "fix": "Use dois itens, ou quatro de tamanhos diferentes.",
+      "patterns": [
+        "\\b[a-záàâãéêíóôõúç]{5,}, [a-záàâãéêíóôõúç]{5,} e [a-záàâãéêíóôõúç]{5,}\\b"
+      ]
+    },
+    {
+      "id": "metadiscourse",
+      "label": "Metalinguagem",
+      "severity": "high",
+      "budget": 0,
+      "why": "Falar sobre o texto em vez de dizer a coisa.",
+      "fix": "Apague a frase. A seguinte é a frase de verdade.",
+      "patterns": [
+        "\\b[eé] importante (destacar|ressaltar|mencionar|notar)\\b",
+        "\\bvale (a pena )?(mencionar|destacar|ressaltar)\\b",
+        "\\ba seguir\\b",
+        "\\bem resumo\\b"
+      ]
+    },
+    {
+      "id": "inflated_lexicon",
+      "label": "Léxico inflado",
+      "severity": "medium",
+      "budget": 2,
+      "why": "Palavras que o modelo superproduz para sinalizar importância.",
+      "fix": "Troque pela palavra mais simples que diga o mesmo.",
+      "patterns": [
+        "\\b(robusto|hol[ií]stico|potencializar|impulsionar|revolucionar|desbloquear|mergulhe|aprofundar|panorama|ecossistema|paradigma)\\b",
+        "\\bpapel (fundamental|crucial|chave)\\b",
+        "\\babrir caminho\\b",
+        "\\bum divisor de [aá]guas\\b",
+        "\\bpedra angular\\b"
+      ]
+    },
+    {
+      "id": "stacked_participles",
+      "label": "Gerúndios empilhados",
+      "severity": "medium",
+      "budget": 1,
+      "why": "Uma oração colada no fim que insinua causa nunca argumentada.",
+      "fix": "Apague, ou transforme em frase com sujeito próprio.",
+      "patterns": [
+        ",\\s+(permitindo|alcançando|destacando|impulsionando|contribuindo|gerando|oferecendo|garantindo|refletindo|demonstrando)\\b"
+      ]
+    },
+    {
+      "id": "vague_attribution",
+      "label": "Atribuição vaga",
+      "severity": "medium",
+      "budget": 0,
+      "why": "Autoridade sem fonte por trás.",
+      "fix": "Nomeie a fonte, ou retire a afirmação.",
+      "patterns": [
+        "\\b(os|alguns) (especialistas|analistas)\\b",
+        "\\b(diversos|v[aá]rios|numerosos) (estudos|relat[oó]rios)\\b",
+        "\\bestima-se que\\b",
+        "\\bsabe-se que\\b"
+      ]
+    },
+    {
+      "id": "formulaic_opener",
+      "label": "Abertura de fórmula",
+      "severity": "medium",
+      "budget": 0,
+      "why": "A primeira linha de fábrica do texto gerado.",
+      "fix": "Abra com algo concreto: uma cena, um número, uma afirmação discutível.",
+      "patterns": [
+        "(?i)(^|\\n)\\s*em um mundo (onde|cada vez)\\b",
+        "(?i)(^|\\n)\\s*hoje mais do que nunca\\b",
+        "(?i)(^|\\n)\\s*no cen[aá]rio atual\\b"
+      ]
+    },
+    {
+      "id": "formulaic_closer",
+      "label": "Fecho de fórmula",
+      "severity": "medium",
+      "budget": 0,
+      "why": "O laço perfeito. O modelo não resiste a fechar com simetria.",
+      "fix": "Termine no que você não resolveu, ou numa pergunta que você quer mesmo que respondam.",
+      "patterns": [
+        "\\bem conclus[aã]o\\b",
+        "\\bno fim das contas\\b",
+        "\\buma coisa [eé] certa\\b"
+      ]
+    }
+  ],
+  "ui": {
+    "not_a_detector": "Sinais, não veredito. Isto não é um detector de IA.",
+    "findings": "ACHADOS",
+    "clean": "Nenhum padrão excedeu seu limite.",
+    "rhythm": "RITMO",
+    "stats": "palavras por frase: média {mean}, dp {sd}, intervalo {lo}-{hi}, variação {cv}",
+    "flat": "O comprimento das frases é uniforme. Ponha uma frase longa e um fragmento curto.",
+    "bursty": "O comprimento das frases varia como na prosa humana.",
+    "budget": "limite",
+    "read_aloud": "Agora leia em voz alta. Isso nenhum script faz.",
+    "copula": "taxa de cópula: {rate} por 100 palavras",
+    "copula_low": "Cópula baixa. Os modelos evitam o verbo ser e empilham substantivos abstratos."
+  }
+}

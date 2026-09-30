@@ -1,0 +1,23 @@
+Cada vez veo más presentaciones impecables que nadie entiende. Empezando por quien las presenta.
+
+Gráficas limpias, sus KPIs, una línea de tendencia que sube y un par de recomendaciones al final. Y si preguntas de dónde salió una cifra, no hay respuesta. Nadie la verificó. Alguien le pidió el documento a una IA, revisó que se viera bien y lo mandó.
+
+En inglés le dicen AI slop. El término nació para la basura que inunda internet, artículos de relleno y videos hechos en masa. Adentro de las empresas se ve distinto porque llega bien vestido y firmado por alguien.
+
+La otra mitad me preocupa más. Ese documento llega a un buzón donde tampoco lo van a leer, porque quien lo recibe lo pega en su propia IA y pide un resumen de tres viñetas. Entonces tenemos un modelo inflando dos líneas hasta catorce páginas, otro modelo exprimiendo esas catorce páginas para volver más o menos a las dos líneas del principio, pérdida en cada paso, y dos personas que cobraron por un intercambio en el que ninguna estuvo presente.
+
+Redactar era el filtro. En el párrafo donde te toca explicar por qué subió el número es justo donde te enteras de que no lo sabes, y eso valía oro: te obligaba a corregir antes de que alguien más lo viera.
+
+Ese momento ahora se puede saltar y nadie se entera.
+
+Un documento bien hecho también protege al error. Un dato raro en un Excel feo levanta la ceja de cualquiera; el mismo dato con su gráfica y su párrafo de contexto entra a la junta y sale aprobado.
+
+Uso IA todos los días para trabajar, así que esto no es nostalgia ni miedo a la herramienta. El problema empieza cuando tratamos su salida como el trabajo terminado.
+
+La prueba más simple que se me ocurre: si lo vas a presentar, cierra el archivo y cuéntalo. Si no puedes explicar de dónde salió un número, no está listo para que lo vea nadie.
+
+De qué nos sirve producir más documentos que nunca si nadie entiende qué está pasando adentro.
+
+¿Alguien ya puso una regla sobre esto en su equipo, o seguimos asumiendo que quien firma el documento lo leyó?
+
+#IA #PensamientoCrítico #Liderazgo #AISlop

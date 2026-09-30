@@ -1,0 +1,163 @@
+{
+  "code": "es",
+  "name": "Español",
+  "detect_hints": [
+    "que",
+    "de",
+    "la",
+    "el",
+    "en",
+    "y",
+    "los",
+    "del",
+    "las",
+    "por",
+    "con",
+    "para",
+    "una",
+    "como",
+    "más"
+  ],
+  "sentence_split": "(?<=[.!?…])\\s+",
+  "copulas": [
+    "es",
+    "son",
+    "era",
+    "eran",
+    "fue",
+    "fueron",
+    "está",
+    "están",
+    "estaba",
+    "ser"
+  ],
+  "copula_floor": 1.5,
+  "categories": [
+    {
+      "id": "antithesis",
+      "label": "Antítesis / paralelismo negativo",
+      "severity": "high",
+      "budget": 1,
+      "why": "El delator número uno. El modelo lo usa para sonar profundo sin aportar información nueva.",
+      "fix": "Deja una como máximo, y solo si el contraste sostiene el argumento. Di la afirmación directa.",
+      "patterns": [
+        "\\bno s[oó]lo\\b[^.?!]{0,70}\\bsino\\b",
+        "\\bno (es|era|fue|son|eran|fueron)\\b[^.?!,;]{1,60}[.,:;]\\s*(es|era|fue|son|sino)\\b",
+        "\\bno se trata de\\b[^.?!]{0,60}[.,:]\\s*(sino|se trata)\\b",
+        "\\bno\\b[^.?!,;]{1,45},\\s*sino\\b",
+        "\\bno porque\\b[^.?!]{0,70}[:;]",
+        "\\ben (lugar|vez) de\\b",
+        "\\b(nunca fue|dej[oó] de ser)\\b"
+      ]
+    },
+    {
+      "id": "tricolon",
+      "label": "Triada",
+      "severity": "medium",
+      "budget": 1,
+      "why": "Tres elementos paralelos seguidos. Repetido produce un ritmo mecánico.",
+      "fix": "Usa dos elementos, o cuatro de distinto largo y forma.",
+      "patterns": [
+        "\\b[a-záéíóúñ]{5,}, [a-záéíóúñ]{5,} y [a-záéíóúñ]{5,}\\b"
+      ]
+    },
+    {
+      "id": "metadiscourse",
+      "label": "Metalenguaje",
+      "severity": "high",
+      "budget": 0,
+      "why": "Hablar del texto en lugar de ir al grano.",
+      "fix": "Borra la frase. La que sigue es la frase de verdad.",
+      "patterns": [
+        "\\bes importante (destacar|se[nñ]alar|mencionar|tener en cuenta)\\b",
+        "\\bcabe (destacar|se[nñ]alar|mencionar)\\b",
+        "\\bvale la pena (mencionar|destacar)\\b",
+        "\\ba continuaci[oó]n\\b",
+        "\\ben resumen\\b",
+        "\\bcomo (ya )?(vimos|mencionamos)\\b"
+      ]
+    },
+    {
+      "id": "inflated_lexicon",
+      "label": "Léxico inflado",
+      "severity": "medium",
+      "budget": 2,
+      "why": "Palabras que el modelo sobreproduce para señalar importancia.",
+      "fix": "Sustituye por la palabra más simple que diga lo mismo.",
+      "patterns": [
+        "\\b(pivotal|robusto|hol[ií]stico|sin[eé]rgico|potenciar|impulsar|revolucionar|desbloquear|sum[eé]rgete|ahondar|profundizar|panorama|ecosistema|paradigma)\\b",
+        "\\b(papel|rol) (fundamental|clave|crucial)\\b",
+        "\\ballanar el camino\\b",
+        "\\bun antes y un despu[eé]s\\b",
+        "\\bpiedra angular\\b",
+        "\\btestimonio de\\b",
+        "\\bsin duda alguna\\b"
+      ]
+    },
+    {
+      "id": "stacked_participles",
+      "label": "Gerundios apilados",
+      "severity": "medium",
+      "budget": 1,
+      "why": "Una cláusula pegada al final que insinúa una causa que nunca se argumentó.",
+      "fix": "Bórrala, o conviértela en oración con sujeto propio.",
+      "patterns": [
+        ",\\s+(permitiendo|logrando|destacando|impulsando|contribuyendo|generando|ofreciendo|garantizando|reflejando|demostrando|consolidando)\\b"
+      ]
+    },
+    {
+      "id": "vague_attribution",
+      "label": "Atribución vaga",
+      "severity": "medium",
+      "budget": 0,
+      "why": "Autoridad sin fuente detrás.",
+      "fix": "Nombra la fuente, o quita la afirmación.",
+      "patterns": [
+        "\\b(los|algunos) (expertos|analistas|observadores)\\b",
+        "\\b(diversos|numerosos|varios) (estudios|informes|reportes)\\b",
+        "\\bse ha (observado|demostrado) que\\b",
+        "\\bse estima que\\b"
+      ]
+    },
+    {
+      "id": "formulaic_opener",
+      "label": "Apertura de molde",
+      "severity": "medium",
+      "budget": 0,
+      "why": "La primera línea de fábrica del texto generado.",
+      "fix": "Abre con algo concreto: una escena, un número, una afirmación discutible.",
+      "patterns": [
+        "(?i)(^|\\n)\\s*en (un mundo donde|el panorama actual|la era de)\\b",
+        "(?i)(^|\\n)\\s*hoy m[aá]s que nunca\\b",
+        "(?i)(^|\\n)\\s*desde [^.?!\\n]{3,40} hasta [^.?!\\n]{3,40},"
+      ]
+    },
+    {
+      "id": "formulaic_closer",
+      "label": "Cierre de molde",
+      "severity": "medium",
+      "budget": 0,
+      "why": "El moño perfecto. El modelo no resiste cerrar con simetría.",
+      "fix": "Cierra con lo que no tienes resuelto, o con una pregunta que de verdad quieres que te contesten.",
+      "patterns": [
+        "\\ben (conclusi[oó]n|definitiva)\\b",
+        "\\ba fin de cuentas\\b",
+        "\\buna cosa es (clara|cierta)\\b",
+        "\\bla l[ií]nea de fondo\\b"
+      ]
+    }
+  ],
+  "ui": {
+    "not_a_detector": "Señales, no sentencia. Esto no es un detector de IA.",
+    "findings": "HALLAZGOS",
+    "clean": "Ningún patrón excedió su presupuesto.",
+    "rhythm": "RITMO",
+    "stats": "palabras por oración: media {mean}, sd {sd}, rango {lo}-{hi}, variación {cv}",
+    "flat": "El largo de las oraciones es uniforme. Mete una frase larga y un fragmento corto.",
+    "bursty": "El largo de las oraciones varía como en la prosa humana.",
+    "budget": "presupuesto",
+    "read_aloud": "Ahora léelo en voz alta. Eso ningún script lo hace.",
+    "copula": "tasa de cópula: {rate} por cada 100 palabras",
+    "copula_low": "Cópula baja. Los modelos evitan el verbo ser y encadenan sustantivos abstractos."
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "code": "en",
+  "name": "English",
+  "detect_hints": [
+    "the",
+    "and",
+    "of",
+    "to",
+    "that",
+    "is",
+    "it",
+    "in",
+    "for",
+    "with",
+    "was",
+    "this",
+    "but",
+    "are",
+    "you"
+  ],
+  "sentence_split": "(?<=[.!?…])\\s+",
+  "copulas": [
+    "is",
+    "are",
+    "was",
+    "were",
+    "be",
+    "been",
+    "am"
+  ],
+  "copula_floor": 1.8,
+  "categories": [
+    {
+      "id": "antithesis",
+      "label": "Negative parallelism",
+      "severity": "high",
+      "budget": 1,
+      "why": "The single most reliable tell. Models reach for it to sound profound without adding information.",
+      "fix": "Keep at most one, and only where the contrast carries the argument. State the claim directly instead.",
+      "patterns": [
+        "\\bnot (just|only|merely|simply)\\b[^.?!]{0,70}\\bbut\\b",
+        "\\bit'?s not\\b[^.?!,;]{1,55}[.,:;]\\s*it'?s\\b",
+        "\\bisn'?t (about\\s)?[^.?!,;]{1,55}[.,:;]\\s*(it'?s|but)\\b",
+        "\\brather than\\b",
+        "\\bnot\\b[^.?!,;]{1,45},\\s*but\\b",
+        "\\bthe (point|problem|question) is not\\b"
+      ]
+    },
+    {
+      "id": "tricolon",
+      "label": "Rule of three",
+      "severity": "medium",
+      "budget": 1,
+      "why": "Three parallel items in a row. Classical rhetoric, but repeated it produces a mechanical cadence.",
+      "fix": "Use two items, or four of unequal length and shape.",
+      "patterns": [
+        "\\b\\w{4,}, \\w{4,},? and \\w{4,}\\b"
+      ]
+    },
+    {
+      "id": "metadiscourse",
+      "label": "Signposting",
+      "severity": "high",
+      "budget": 0,
+      "why": "Talking about the text instead of saying the thing.",
+      "fix": "Delete the phrase. The sentence after it is the actual sentence.",
+      "patterns": [
+        "\\bit'?s (important|worth) (to note|noting|mentioning)\\b",
+        "\\bit should be noted\\b",
+        "\\bas (we|previously) (discussed|mentioned)\\b",
+        "\\blet'?s (dive|delve) in\\b",
+        "\\bin summary\\b",
+        "\\bto summarize\\b",
+        "\\bhere'?s the (thing|kicker|catch)\\b"
+      ]
+    },
+    {
+      "id": "inflated_lexicon",
+      "label": "Inflated vocabulary",
+      "severity": "medium",
+      "budget": 1,
+      "why": "Words models overproduce to signal importance.",
+      "fix": "Replace with the plainest word that carries the meaning.",
+      "patterns": [
+        "\\b(delve|delving|underscore[sd]?|underscoring|pivotal|tapestry|intricate|fostering|foster|boasts?|showcas\\w+|vibrant|seamless\\w*|robust|leverag\\w+|harness\\w*|unlock\\w*|elevat\\w+|realm|groundbreaking|game.chang\\w+|testament to)\\b",
+        "\\bplays? an? (crucial|vital|key|pivotal|significant) role\\b",
+        "\\bpaves? the way\\b",
+        "\\bin the (ever.)?(evolving|changing) landscape\\b"
+      ]
+    },
+    {
+      "id": "stacked_participles",
+      "label": "Trailing participles",
+      "severity": "medium",
+      "budget": 1,
+      "why": "A clause bolted onto the end to imply causation that was never argued.",
+      "fix": "Cut it, or make it its own sentence with a real subject.",
+      "patterns": [
+        ",\\s+(highlighting|underscoring|showcasing|emphasizing|ensuring|allowing|enabling|fostering|contributing to|reflecting|demonstrating|solidifying)\\b"
+      ]
+    },
+    {
+      "id": "vague_attribution",
+      "label": "Vague attribution",
+      "severity": "medium",
+      "budget": 0,
+      "why": "Authority with no source behind it.",
+      "fix": "Name the source, or drop the claim.",
+      "patterns": [
+        "\\b(experts|analysts|observers|critics) (say|argue|note|have (noted|cited))\\b",
+        "\\b(studies|reports|research) (show|suggest|indicate)\\b",
+        "\\bit is widely (believed|regarded|considered)\\b",
+        "\\bindustry reports\\b",
+        "\\bmany believe\\b"
+      ]
+    },
+    {
+      "id": "formulaic_opener",
+      "label": "Formulaic opening",
+      "severity": "medium",
+      "budget": 0,
+      "why": "The stock first line of generated text.",
+      "fix": "Open on something concrete: a scene, a number, a claim someone would argue with.",
+      "patterns": [
+        "(?i)(^|\\n)\\s*in (today'?s|a world where|an era|the age of)\\b",
+        "(?i)(^|\\n)\\s*now more than ever\\b",
+        "(?i)(^|\\n)\\s*from [^.?!\\n]{3,40} to [^.?!\\n]{3,40},"
+      ]
+    },
+    {
+      "id": "formulaic_closer",
+      "label": "Formulaic closing",
+      "severity": "medium",
+      "budget": 0,
+      "why": "The tidy bow. Models cannot resist restating the thesis with symmetry.",
+      "fix": "End on the part you have not resolved, or on a question you actually want answered.",
+      "patterns": [
+        "\\bin conclusion\\b",
+        "\\bat the end of the day\\b",
+        "\\bone thing is (clear|certain)\\b",
+        "\\bultimately,\\s",
+        "\\bthe bottom line\\b"
+      ]
+    }
+  ],
+  "ui": {}
+}

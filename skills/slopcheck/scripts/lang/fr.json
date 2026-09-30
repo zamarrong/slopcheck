@@ -1,0 +1,149 @@
+{
+  "code": "fr",
+  "name": "Français",
+  "detect_hints": [
+    "les",
+    "des",
+    "une",
+    "que",
+    "qui",
+    "dans",
+    "pour",
+    "pas",
+    "avec",
+    "sur",
+    "est",
+    "sont",
+    "plus",
+    "cette"
+  ],
+  "sentence_split": "(?<=[.!?…])\\s+",
+  "copulas": [
+    "est",
+    "sont",
+    "était",
+    "étaient",
+    "fut",
+    "furent",
+    "être"
+  ],
+  "copula_floor": 1.5,
+  "categories": [
+    {
+      "id": "antithesis",
+      "label": "Parallélisme négatif",
+      "severity": "high",
+      "budget": 1,
+      "why": "Le signe le plus fiable. Le modèle y recourt pour paraître profond sans rien ajouter.",
+      "fix": "N'en gardez qu'un, et seulement si le contraste porte l'argument.",
+      "patterns": [
+        "\\bnon seulement\\b[^.?!]{0,70}\\bmais\\b",
+        "\\bce n'est pas\\b[^.?!,;]{1,50},\\s*c'est\\b",
+        "\\bplut[oô]t que\\b",
+        "\\bau lieu de\\b"
+      ]
+    },
+    {
+      "id": "tricolon",
+      "label": "Triade",
+      "severity": "medium",
+      "budget": 1,
+      "why": "Trois éléments parallèles. Répété, cela produit une cadence mécanique.",
+      "fix": "Utilisez deux éléments, ou quatre de longueurs inégales.",
+      "patterns": [
+        "\\b[a-zàâçéèêëîïôûùüÿñ]{5,}, [a-zàâçéèêëîïôûùüÿñ]{5,} et [a-zàâçéèêëîïôûùüÿñ]{5,}\\b"
+      ]
+    },
+    {
+      "id": "metadiscourse",
+      "label": "Métadiscours",
+      "severity": "high",
+      "budget": 0,
+      "why": "Parler du texte au lieu de dire la chose.",
+      "fix": "Supprimez la phrase. La suivante est la vraie phrase.",
+      "patterns": [
+        "\\bil est important de (noter|souligner|mentionner)\\b",
+        "\\bil convient de (noter|souligner)\\b",
+        "\\ben r[eé]sum[eé]\\b",
+        "\\bci-dessous\\b"
+      ]
+    },
+    {
+      "id": "inflated_lexicon",
+      "label": "Lexique gonflé",
+      "severity": "medium",
+      "budget": 2,
+      "why": "Mots que le modèle surproduit pour signaler l'importance.",
+      "fix": "Remplacez par le mot le plus simple qui dit la même chose.",
+      "patterns": [
+        "\\b(robuste|holistique|incontournable|r[eé]volutionner|d[eé]bloquer|plongez|approfondir|paysage|[eé]cosyst[eè]me|paradigme)\\b",
+        "\\br[oô]le (cl[eé]|crucial|fondamental)\\b",
+        "\\bouvrir la voie\\b",
+        "\\bpierre angulaire\\b"
+      ]
+    },
+    {
+      "id": "stacked_participles",
+      "label": "Participes empilés",
+      "severity": "medium",
+      "budget": 1,
+      "why": "Une proposition collée à la fin qui sous-entend une cause jamais démontrée.",
+      "fix": "Supprimez-la, ou faites-en une phrase avec un vrai sujet.",
+      "patterns": [
+        ",\\s+(permettant|offrant|garantissant|soulignant|mettant en [eé]vidence|contribuant|refl[eé]tant|d[eé]montrant)\\b"
+      ]
+    },
+    {
+      "id": "vague_attribution",
+      "label": "Attribution vague",
+      "severity": "medium",
+      "budget": 0,
+      "why": "De l'autorité sans source derrière.",
+      "fix": "Nommez la source, ou retirez l'affirmation.",
+      "patterns": [
+        "\\b(les|certains) (experts|analystes|observateurs)\\b",
+        "\\b(plusieurs|de nombreuses?) (études|rapports)\\b",
+        "\\bon estime que\\b"
+      ]
+    },
+    {
+      "id": "formulaic_opener",
+      "label": "Ouverture formatée",
+      "severity": "medium",
+      "budget": 0,
+      "why": "La première ligne d'usine du texte généré.",
+      "fix": "Ouvrez sur du concret : une scène, un chiffre, une affirmation discutable.",
+      "patterns": [
+        "(?i)(^|\\n)\\s*dans un monde o[uù]\\b",
+        "(?i)(^|\\n)\\s*[aà] l'[eè]re (du|de la|des)\\b",
+        "(?i)(^|\\n)\\s*aujourd'hui plus que jamais\\b"
+      ]
+    },
+    {
+      "id": "formulaic_closer",
+      "label": "Clôture formatée",
+      "severity": "medium",
+      "budget": 0,
+      "why": "Le nœud parfait. Le modèle ne résiste pas à la symétrie finale.",
+      "fix": "Terminez sur ce que vous n'avez pas résolu, ou sur une vraie question.",
+      "patterns": [
+        "\\ben conclusion\\b",
+        "\\ben fin de compte\\b",
+        "\\bune chose est (claire|s[uû]re)\\b"
+      ]
+    }
+  ],
+  "ui": {
+    "not_a_detector": "Des signaux, pas un verdict. Ceci n'est pas un détecteur d'IA.",
+    "findings": "CONSTATS",
+    "clean": "Aucun motif n'a dépassé son quota.",
+    "rhythm": "RYTHME",
+    "stats": "mots par phrase : moyenne {mean}, écart-type {sd}, étendue {lo}-{hi}, variation {cv}",
+    "flat": "Les phrases ont toutes la même longueur. Ajoutez une phrase longue et un fragment.",
+    "bursty": "La longueur des phrases varie comme dans la prose humaine.",
+    "budget": "quota",
+    "read_aloud": "Maintenant, lisez-le à voix haute. Aucun script ne fait ça.",
+    "copula": "taux de copule : {rate} pour 100 mots",
+    "copula_low": "Copule faible. Les modèles évitent le verbe être et empilent les noms abstraits."
+  }
+}

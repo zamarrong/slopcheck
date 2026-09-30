@@ -1,0 +1,7 @@
+I spent four hours last Tuesday trying to figure out why our invoice job was writing duplicate rows. The answer turned out to be embarrassing. A retry wrapper someone added in 2023 had no idempotency key, so any timeout during the third-party call produced a second write, and timeouts were common on Fridays because the vendor ran their own batch jobs then.
+
+Nobody had noticed for two years. The duplicates were small, a few dozen a month, and they got cleaned up by a reconciliation script that everyone assumed was doing something else entirely.
+
+What bothers me is not the bug. It's that we had two systems papering over each other, and the only reason I found it was that I happened to be reading logs for an unrelated reason.
+
+I don't have a clean lesson here. "Add idempotency keys" is true and useless; we knew that. The real question is how you find the seams where one workaround is quietly covering for another, and I still don't know the answer.
