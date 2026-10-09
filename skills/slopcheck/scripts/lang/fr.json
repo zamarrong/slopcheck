@@ -40,7 +40,8 @@
         "\\bnon seulement\\b[^.?!]{0,70}\\bmais\\b",
         "\\bce n'est pas\\b[^.?!,;]{1,50},\\s*c'est\\b",
         "\\bplut[oô]t que\\b",
-        "\\bau lieu de\\b"
+        "\\bau lieu de\\b",
+        "\\b\\w+,? et non (en|[aà]|au|par|pour|de|du|avec|quand|dans)\\b"
       ]
     },
     {

@@ -43,7 +43,8 @@
         "\\bisn'?t (about\\s)?[^.?!,;]{1,55}[.,:;]\\s*(it'?s|but)\\b",
         "\\brather than\\b",
         "\\bnot\\b[^.?!,;]{1,45},\\s*but\\b",
-        "\\bthe (point|problem|question) is not\\b"
+        "\\bthe (point|problem|question) is not\\b",
+        "\\b\\w+,? and not (in|at|on|by|for|with|when|after|because)\\b"
       ]
     },
     {

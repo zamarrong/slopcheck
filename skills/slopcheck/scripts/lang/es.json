@@ -48,7 +48,8 @@
         "\\bno porque\\b[^.?!]{0,70}[:;]",
         "\\ben (lugar|vez) de\\b",
         "\\b(nunca fue|dej[oó] de ser)\\b",
-        "\\b(tampoco|ni)\\b[^.?!]{0,60}\\bsino\\b"
+        "\\b(tampoco|ni)\\b[^.?!]{0,60}\\bsino\\b",
+        "\\b\\w+,? y no (en|a|al|por|para|de|del|con|como|cuando|dentro|hasta)\\b"
       ]
     },
     {

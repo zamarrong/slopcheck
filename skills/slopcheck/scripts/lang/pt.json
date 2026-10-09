@@ -42,7 +42,8 @@
         "\\bn[aã]o (apenas|s[oó])\\b[^.?!]{0,70}\\bmas\\b",
         "\\bn[aã]o [eé]\\b[^.?!,;]{1,50}[,:]\\s*[eé]\\b",
         "\\bem vez de\\b",
-        "\\bn[aã]o se trata de\\b"
+        "\\bn[aã]o se trata de\\b",
+        "\\b\\w+,? e n[aã]o (em|a|ao|por|para|de|do|com|quando|dentro)\\b"
       ]
     },
     {

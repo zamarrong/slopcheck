@@ -116,6 +116,19 @@ class FalsePositives(unittest.TestCase):
         self.assertIn("antithesis", self._ids(
             "Tampoco se trata de tener un numero, sino de repartir el riesgo.", "es"))
 
+    def test_x_and_not_y_is_caught(self):
+        # Found by a reader of a draft: "Lo escribo ahora y no en tres meses"
+        # is a negative parallelism with no "sino" and no "no es X, es Y".
+        self.assertIn("antithesis", self._ids(
+            "Lo escribo ahora y no en tres meses, cuando quede bonito.", "es"))
+        self.assertIn("antithesis", self._ids(
+            "I am writing this now and not in three months.", "en"))
+
+    def test_sequential_y_no_is_not_antithesis(self):
+        # "llego y no dijo nada" is a sequence, not a contrast.
+        self.assertNotIn("antithesis", self._ids(
+            "El vendedor llego y no dijo nada durante toda la junta.", "es"))
+
     def test_single_word_series_is_still_caught(self):
         self.assertIn("tricolon", self._ids("El sistema es rapido, barato y seguro.", "es"))
         self.assertIn("tricolon", self._ids("It is fast, cheap and reliable.", "en"))
