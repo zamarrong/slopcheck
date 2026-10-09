@@ -17,7 +17,7 @@ import re
 import sys
 from pathlib import Path
 
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 LANG_DIR = Path(__file__).resolve().parent / "lang"
 
 SEVERITY_ORDER = {"high": 3, "medium": 2, "low": 1, "info": 0}

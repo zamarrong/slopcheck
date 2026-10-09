@@ -83,6 +83,68 @@ Language packs are JSON in `scripts/lang/`. Nothing in the engine is
 English-specific; a new language is a data file, not a code change. See
 `CONTRIBUTING.md` in the repository.
 
+## Thesis first
+
+Before writing a line, say what the text argues in one sentence. Everything else is
+evidence for it or it is cut.
+
+Skipping this is how a draft dies by a thousand edits: each fix is sound on its own, and
+after fifteen of them the piece is a list of topics with no spine. If a reader says "I
+don't know what this is trying to say", stop patching sentences and go back to the
+thesis. That is a rewrite, not an edit.
+
+## Where emotion comes from
+
+A text can clear every check in this skill and still be dead on the page.
+
+The fix is never adjectives. It is **scene and stakes**:
+
+- Put the reader inside a moment. "You open the console, the account is frozen, there is
+  nobody to call, and your whole team is waiting to work" beats "we have experienced
+  service interruptions".
+- Name what is at risk, in the subject's own terms.
+- Give the strongest line its own paragraph. Buried in a clause, it dies.
+- Resolve the tension you opened. A scene with no landing is just noise.
+
+Specificity is also what makes prose feel alive. "When Meta marks the line red" is better
+than "when it detects risk signals" — not because it is prettier, but because only
+someone who has lived it writes the first one.
+
+## What the script cannot see
+
+Every item below was caught by a human reading a draft that the audit had passed clean.
+Each one would have shipped.
+
+**Broken referents.** A cut removed a clause and "exactly this" began pointing at the
+wrong antecedent; the text ended up saying someone had asked to be blocked. After any
+deletion, re-read every sentence that opens with a pronoun or a demonstrative.
+
+**Unwanted presupposition.** "A year ago we operated much worse" tells the reader you
+operate badly today. "Either a person has that conversation or nobody does" told the
+reader you would leave a customer unattended. Comparatives and absolutes smuggle in
+claims you never meant to make.
+
+**Claims the system cannot back.** A draft said the product computed return on ad spend.
+It imports no ad spend, and every deal in the database carried a value of zero. Verify
+against the running system, not against the brand document, not against memory, and not
+against what the product roadmap says it will do.
+
+**Context that is not yours to publish.** The author explained, as background, how his
+product related to the company in the story. It went into the draft and would have
+exposed him to his own board. Background given to you so you understand is not material
+to publish. Ask.
+
+**Hedging something true.** Flagging that a working feature shipped recently reads as
+inexperience. Removing a false claim is mandatory; putting an asterisk on a true one only
+costs the author authority.
+
+**Regional vocabulary.** Language packs do not catch dialect. "Pizarra" is Spain,
+"pizarrón" is Mexico. Know which variety the author writes.
+
+**Ornamental filler.** Clauses that sound like craft and carry nothing: "which is what
+really moves the needle", "one by one", "and I would rather say it than sell it". Test:
+delete the clause. If the paragraph says the same thing, it was filler.
+
 ## What this is not
 
 Not an AI detector. It cannot tell you whether a model wrote something, and it will
@@ -95,3 +157,7 @@ ICMJE, COPE and the EU AI Act actually require.
 
 The counts are signals, not a verdict. A text can score clean and still read like a
 machine, and one well-placed antithesis can be the best line in the paragraph.
+
+In the session that produced this skill, three antithesis forms and every single problem
+in the list above were found by a person reading aloud, not by the script. The script
+narrows what you have to look for. It does not look for you.
