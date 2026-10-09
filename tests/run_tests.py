@@ -110,6 +110,12 @@ class FalsePositives(unittest.TestCase):
         self.assertNotIn("tricolon", self._ids(
             "We serve retail, logistics, manufacturing and healthcare clients.", "en"))
 
+    def test_tampoco_sino_is_caught(self):
+        # Found in real use: "Tampoco se trata de X, sino de Y" slipped past
+        # because \bno\b does not match inside "tampoco".
+        self.assertIn("antithesis", self._ids(
+            "Tampoco se trata de tener un numero, sino de repartir el riesgo.", "es"))
+
     def test_single_word_series_is_still_caught(self):
         self.assertIn("tricolon", self._ids("El sistema es rapido, barato y seguro.", "es"))
         self.assertIn("tricolon", self._ids("It is fast, cheap and reliable.", "en"))

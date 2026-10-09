@@ -47,7 +47,8 @@
         "\\bno\\b[^.?!,;]{1,45},\\s*sino\\b",
         "\\bno porque\\b[^.?!]{0,70}[:;]",
         "\\ben (lugar|vez) de\\b",
-        "\\b(nunca fue|dej[oó] de ser)\\b"
+        "\\b(nunca fue|dej[oó] de ser)\\b",
+        "\\b(tampoco|ni)\\b[^.?!]{0,60}\\bsino\\b"
       ]
     },
     {
